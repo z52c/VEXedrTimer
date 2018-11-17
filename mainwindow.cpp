@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(timer1,SIGNAL(timeout()),this,SLOT(timerOut()));
     showLCD(0);
     pause=false;
+    working=false;
     ui->pushButtonPause->setEnabled(false);
     shortcutZidong= new QShortcut(this);
     shortcutZidong->setKey(tr("1"));
@@ -65,6 +66,7 @@ void MainWindow::on_pushButtonZidong_clicked()
     {
         timer1->stop();
     }
+    working=true;
     end=15;
     showLCD(end);
     timer1->start(1000);
@@ -82,6 +84,7 @@ void MainWindow::on_pushButtonShoudong_clicked()
     {
         timer1->stop();
     }
+    working=true;
     end=105;
     showLCD(end);
     timer1->start(1000);
@@ -99,6 +102,7 @@ void MainWindow::on_pushButtonJineng_clicked()
     {
         timer1->stop();
     }
+    working=true;
     end=60;
     showLCD(end);
     timer1->start(1000);
@@ -124,6 +128,7 @@ void MainWindow::timerOut()
 
 void MainWindow::on_pushButton_clicked()
 {
+    working=false;
     timer1->stop();
     showLCD(0);
     ui->pushButtonJineng->setEnabled(true);
@@ -136,6 +141,8 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_pushButtonPause_clicked()
 {
+    if(!working)
+        return;
     if(pause)
     {
         timer1->start();
