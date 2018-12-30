@@ -8,3 +8,5 @@ VEXedr计时器
 手动 2
 技能赛 3
 暂停/继续 空格
+
+![avatar](http://ww1.sinaimg.cn/large/006FAtVgly1fyp64zefw0j30fx0cm3z4.jpg）
